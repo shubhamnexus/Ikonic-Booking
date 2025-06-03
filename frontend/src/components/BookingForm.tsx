@@ -72,10 +72,10 @@ export function BookingForm() {
       case 0:
         return (
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="flex mb-6 border-b">
+            <div className="flex flex-col xs:flex-row mb-4 sm:mb-6 border-b">
               <button
                 type="button"
-                className={`flex-1 py-3 text-center font-medium ${
+                className={`flex-1 py-2 sm:py-3 text-center font-medium text-sm sm:text-base ${
                   bookingType === 'transfer'
                     ? 'text-[#FF6600] border-b-2 border-[#FF6600]'
                     : 'text-gray-500'
@@ -89,7 +89,7 @@ export function BookingForm() {
               </button>
               <button
                 type="button"
-                className={`flex-1 py-3 text-center font-medium ${
+                className={`flex-1 py-2 sm:py-3 text-center font-medium text-sm sm:text-base ${
                   bookingType === 'hourly'
                     ? 'text-[#FF6600] border-b-2 border-[#FF6600]'
                     : 'text-gray-500'
@@ -103,7 +103,7 @@ export function BookingForm() {
               </button>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <LocationSearch
                 placeholder="Pickup Location"
                 onLocationSelect={handlePickupSelect}
@@ -116,9 +116,9 @@ export function BookingForm() {
                 />
               )}
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
                 <div className="relative">
-                  <Calendar className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+                  <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                   <input
                     type="date"
                     value={state.date}
@@ -126,12 +126,12 @@ export function BookingForm() {
                       type: 'SET_DATE_TIME',
                       payload: { date: e.target.value, time: state.time }
                     })}
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-[#FF6600] focus:border-[#FF6600]"
+                    className="w-full pl-10 pr-4 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:ring-[#FF6600] focus:border-[#FF6600] text-sm sm:text-base"
                     required
                   />
                 </div>
                 <div className="relative">
-                  <Clock className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+                  <Clock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                   <input
                     type="time"
                     value={state.time}
@@ -139,7 +139,7 @@ export function BookingForm() {
                       type: 'SET_DATE_TIME',
                       payload: { date: state.date, time: e.target.value }
                     })}
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-[#FF6600] focus:border-[#FF6600]"
+                    className="w-full pl-10 pr-4 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:ring-[#FF6600] focus:border-[#FF6600] text-sm sm:text-base"
                     required
                   />
                 </div>
@@ -148,7 +148,7 @@ export function BookingForm() {
 
             <button
               type="submit"
-              className="w-full bg-[#FF6600] text-white py-3 px-6 rounded-lg font-medium hover:bg-[#e65c00] transition-colors"
+              className="w-full bg-[#FF6600] text-white py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg font-medium text-base sm:text-lg hover:bg-[#e65c00] transition-colors"
             >
               Get My Price
             </button>
@@ -204,7 +204,7 @@ export function BookingForm() {
   };
 
   return (
-    <div ref={formRef} className="bg-white rounded-lg shadow-xl p-6 max-w-4xl mx-auto">
+    <div ref={formRef} className="bg-white rounded-lg shadow-xl p-4 sm:p-6 max-w-full sm:max-w-4xl mx-auto w-full">
       <BookingSteps />
       {renderStepContent()}
     </div>
